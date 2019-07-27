@@ -46,7 +46,7 @@ if __name__ == '__main__':
         if len(sys.argv) == 3:
             want  = int(sys.argv[2], 16)
             padding = crc.bruteforce(want)
-            print(f'{crc.get():X} -> {want:X}: Pad with {padding}')
+            print(f'{crc:X} -> {want:X}: Pad with {padding}')
     else:
         print('Usage:')
         print('python crc.py FILE')
