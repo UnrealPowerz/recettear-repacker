@@ -1,6 +1,11 @@
 import sys
 
-# lnkdatas: 0x8BAA   lnkdata: 0xC5E1    bmpdata: 0x21DC
+known_crc = { 0x8BAA: 'lnkdatas.bin EN',
+              0xC5E1: 'lnkdata.bin EN',
+              0x7CE7: 'bmpdata.bin v1.106 EN',
+              0x21DC: 'bmpdata.bin v1.108 EN',
+              0xCCB3: 'lnkdata.bin v1.126 JP',
+              0x286C: 'bmpdata.bin v1.126 JP' }
 
 class Crc:
     def __init__(self, buf):
@@ -41,7 +46,8 @@ if __name__ == '__main__':
         with open(path, 'rb') as f:
             data = f.read()
         crc = Crc(data).get()
-        print(f'CRC for {path}: {crc:X}')
+        note = f'[{known_crc[crc]}]' if crc in known_crc else ''
+        print(f'CRC for {path}: {crc:X} {note}')
         
         if len(sys.argv) == 3:
             want  = int(sys.argv[2], 16)
