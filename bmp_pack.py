@@ -48,6 +48,8 @@ def compress_folder(root):
         for fname in fileList:
             path = os.path.join(dirName, fname)
             rel  = os.path.relpath(path, root)
+            if os.sep != '/':
+                rel = rel.replace(os.sep, '/')
             print(rel)
             
             with open(path, 'rb') as f:
