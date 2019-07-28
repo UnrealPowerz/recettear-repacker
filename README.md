@@ -84,18 +84,19 @@ Lastly, here is an overview of the packed game files.
 
 ```
 dataxxx.bin
-├── bmp/                  All images
-│   ├── chr/              Character spritesheets
-│   ├── en/               Enemy icons
-│   ├── item/             Item spritesheets
-│   ├── ivent/            Cutscene/event images
-│   ├── nami/             Fog textures
-│   ├── title/            Boss titles
+├── bmp/                  All images
+│   ├── chr/              Character spritesheets
+│   ├── en/               Enemy icons
+│   ├── item/             Item spritesheets
+│   ├── ivent/            Cutscene/event images
+│   ├── nami/             Fog textures
+│   ├── title/            Boss titles
 │   └── umi/              Water textures
-├── data/                 Misc game data
-│   ├── buysell.txt       ??? Customer dialogue settings
-│   ├── chara.txt         Adventurer stats
-│   ├── config.txt        Font settings
+├── data/                 Misc game data
+│   ├── buysell.txt       ??? Customer dialogue settings
+│   ├── chara.txt      
+   Adventurer stats
+│   ├── config.txt         Font settings
 │   ├── enemylist.txt     Dungeon enemy settings
 │   ├── enemy.txt         Dungeon enemy stats
 │   ├── event.txt         Event flags and conditions
@@ -109,14 +110,14 @@ dataxxx.bin
 │   ├── tuto1.txt         Selling tutorial
 │   ├── tuto2.txt         Buying tutorial
 │   └── tuto3.txt         Suggestion selling tutorial
-├── ef/                   ??? Effect animation data
-├── idx/                  ??? Maybe spritesheet or animation info
-│   ├── stageidx.txt/     Dungeon data
+├── ef/                   ??? Effect animation data
+├── idx/                  ??? Maybe spritesheet or animation info
+│   ├── stageidx.txt/     Dungeon data
 │   ...
-├── iv/                   Event scripts
-├── kyaku/                Shop customer data
-├── xfile/                3D model textures
-├── xfile2/               Boss 3D model textures
-├── fontdata.bin          Bitmap font
-└── fontidx.bin           ???
+├── iv/                   Event scripts
+├── kyaku/                Shop customer data
+├── xfile/                 3D model textures
+├── xfile2/                Boss 3D model textures
+├── fontdata.bin          Bitmap font
+└── fontidx.bin           ???
 ```
