@@ -1,11 +1,12 @@
 import sys
+import hashlib
 
-known_crc = { 0x8BAA: 'lnkdatas.bin EN',
-              0xC5E1: 'lnkdata.bin EN',
-              0x7CE7: 'bmpdata.bin v1.106 EN',
-              0x21DC: 'bmpdata.bin v1.108 EN',
-              0xCCB3: 'lnkdata.bin v1.126 JP',
-              0x286C: 'bmpdata.bin v1.126 JP' }
+known_crc = { 0x8BAA: ('lnkdatas.bin EN',       b'\xf6q\xf8\x08\xbe^\xfahz\xbf1J\xa1\xadU-'),
+              0xC5E1: ('lnkdata.bin EN',        None),
+              0x7CE7: ('bmpdata.bin v1.106 EN', b'\xeax\x0el}\xe7\x9b\x831\xa0sq#9\xc5\x94'),
+              0x21DC: ('bmpdata.bin v1.108 EN', b'\xa8\x8a\xcb\x1c\x81\x1aNr\x84_\xc0\x07m\x10J\x8b'),
+              0xCCB3: ('lnkdata.bin JP',        b'\xee!\x04\x92\xd5@\x15\xc2A\xc9\x01\xa7\xdb6\x8c\xb2'),
+              0x286C: ('bmpdata.bin v1.126 JP', b'\xac`\xa5\x9b\xce\x9f\xaf*\xaf\x9e\xb44I\xd4\x90\x8f') }
 
 class Crc:
     def __init__(self, buf):
@@ -46,8 +47,16 @@ if __name__ == '__main__':
         with open(path, 'rb') as f:
             data = f.read()
         crc = Crc(data).get()
-        note = f'[{known_crc[crc]}]' if crc in known_crc else ''
-        print(f'CRC for {path}: {crc:X} {note}')
+        
+        if crc in known_crc:
+            desc, md5hash = known_crc[crc]
+            note = desc
+            if md5hash is not None:
+                md5 = hashlib.md5(data).digest()
+                note += ' original' if md5 == md5hash else ' modified'
+            print(f'CRC for {path}: {crc:X} [{note}]')
+        else:
+            print(f'CRC for {path}: {crc:X}')
         
         if len(sys.argv) == 3:
             want  = int(sys.argv[2], 16)
