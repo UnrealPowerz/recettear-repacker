@@ -5,7 +5,7 @@ A set of scripts to unpack and repack Recettear game files
 ## How it works
 
 Recettear stores most of its data in `bin/dataxxx.bin`.  
-These files contain almost all assets, inidividually compressed with LZSS.  
+These files contain almost all assets, individually compressed with LZSS.  
 `lnkdatas.bin` (or `lnkdata.bin` for the Japanese version) contains info about  
 which assets can be found in which file and their offset.
 
@@ -94,8 +94,7 @@ dataxxx.bin
 │   └── umi/              Water textures
 ├── data/                 Misc game data
 │   ├── buysell.txt       ??? Customer dialogue settings
-│   ├── chara.txt      
-   Adventurer stats
+│   ├── chara.txt         Adventurer stats
 │   ├── config.txt         Font settings
 │   ├── enemylist.txt     Dungeon enemy settings
 │   ├── enemy.txt         Dungeon enemy stats
