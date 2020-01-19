@@ -53,6 +53,7 @@ def lzw_read(data):
 def bmp_unpack(bmp, folder):
     data = bmp.read()
     length = bmp.tell()
+    # change to 20 for Ele Paper Action
     name_len = 84
     entry_len = name_len + 3 * 4
 
@@ -62,6 +63,9 @@ def bmp_unpack(bmp, folder):
     print('=' * (40 + 11 + 7 + 8 + 3))
     for name, offset, size, dsize in items:
         print(f'{name:<40} {offset:>11} {size:>7} {dsize:>8}')
+        
+        if size == 0:
+            continue
         
         bmp.seek(4 + len(items) * entry_len + offset)
         data = bmp.read(size)

@@ -6,7 +6,11 @@ def read_header(data, name_len):
     items = []
     for i in range(4, 4 + step * num_items, step):
         (name, dsize, offset, size) = struct.unpack('>' + str(name_len) + 'siii', data[i:i+step])
-        name = name[:name.index(0)].decode('ascii')
+        try:
+            name = name[:name.index(0)]
+        except:
+            pass
+        name = name.decode('ascii')
         items.append((name, offset, size, dsize))
     return items
 
